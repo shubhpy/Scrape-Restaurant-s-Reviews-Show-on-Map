@@ -20,6 +20,22 @@ $(document).ready(function () {
 
     var Listlatlng = [];
 
+function createMarker(latlng, html) {
+  var marker = new google.maps.Marker({
+    position: latlng,
+    map: map
+  });
+
+  google.maps.event.addListener(marker, 'mouseover', function() {
+    infowindow.setContent(html);
+    infowindow.open(map, marker);
+  });
+
+  google.maps.event.addListener(marker, 'mouseout', function() {
+    infowindow.close();
+  });
+}
+
     function getGeoData(ty){
         process(ty)
         }
